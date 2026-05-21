@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/todolist/todolist.csproj",
+      "projectUniqueName": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/todolist.csproj",
       "projectName": "todolist",
-      "projectPath": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/todolist/todolist.csproj",
+      "projectPath": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/todolist.csproj",
       "packagesPath": "/Users/macg4/.nuget/packages/",
-      "outputPath": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/todolist/obj/",
+      "outputPath": "/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/todolist/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/macg4/.nuget/NuGet/NuGet.Config"
