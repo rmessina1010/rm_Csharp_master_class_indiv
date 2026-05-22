@@ -25,13 +25,16 @@ public class Die{
     public  int[] _apperances {private set; get;}
 
     public int OnFace{ get; private set;} 
+     private Random Randomness;
 
     public Die (int sides){
         Sides = sides;
         _apperances = new int[sides];
+        Randomness = Random.Shared;
     }
+    
     public int Roll(){
-        int roll = Random.Shared.Next(Sides);
+        int roll =  Randomness.Next(Sides);
         _apperances[roll]++;
         OnFace = roll+1;
         return OnFace ;
