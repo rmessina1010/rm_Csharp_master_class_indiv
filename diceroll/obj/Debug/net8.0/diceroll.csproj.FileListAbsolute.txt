@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/bin/Debug/net8.0/diceroll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/bin/Debug/net8.0/diceroll.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/bin/Debug/net8.0/diceroll.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/bin/Debug/net8.0/diceroll.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/bin/Debug/net8.0/diceroll.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/refint/diceroll.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/diceroll.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/diceroll/obj/Debug/net8.0/ref/diceroll.dll
