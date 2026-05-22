@@ -54,12 +54,16 @@ public class Game {
         Player player = new Player();
         bool again = true;
         bool win;
+        UserInput @UserInput = new UserInput(new Dictionary<string, string>{
+            {"notNumber" , "Enter a valid integer number!"},
+            {"notRange"  , "This choice is not in range!"}
+        });
 
         while (again){
             win = false;
             @Die.Roll();
             for (int i = Tries; i > 0; i--){
-                playerChoice = UserInput(1,@Die.Sides, $"Pick a number between 1 and {@Die.Sides}, {player.Name}");
+                playerChoice = @UserInput.Range(1,@Die.Sides, $"Pick a number between 1 and {@Die.Sides}, {player.Name}");
                 if (@Die.OnFace == playerChoice){
                 Console.WriteLine($"OMG, {player.Name}, you won!!");
                     win = true;
@@ -84,32 +88,46 @@ public class Game {
         Console.WriteLine();
         return choice == 'Y';
     }
-
-    public int UserInput(int number1, int number2, string label){
-        string userInput;
-        int sanitized;
-        bool isValid;
-        do{
-            Console.WriteLine(label);
-            userInput = Console.ReadLine() ?? "";
-            isValid = Validation.InRange(userInput, number1,number2,out int result, "Not in Range!!", "Not a number!!");
-            sanitized = result;
-        }while(!isValid);
-        return sanitized;
-    }
-    public int UserInput(string label){
-        string userInput;
-        int sanitized;
-        bool isValid;
-        do{
-            Console.WriteLine(label);
-            userInput = Console.ReadLine() ?? "";
-            isValid = Validation.IsInt(userInput, out int result, "Not a number!!");
-            sanitized = result;
-        }while(!isValid);
-        return sanitized;
-    }
     
+}
+
+public class UserInput{
+
+        private Dictionary<string,string> ErrorMessages {get; init;}
+
+        public UserInput(Dictionary<string, string> errors){
+            string[] props = {"notNumber", "notRange"};
+            ErrorMessages = new Dictionary<string, string>();
+            var errKeys  = errors.Keys;
+            foreach (string prop in props){
+                ErrorMessages.Add(prop, errors[prop] ?? "");
+            }
+        }
+
+        public int Range(int number1, int number2, string label){
+        string userInput;
+        int sanitized;
+        bool isValid;
+        do{
+            Console.WriteLine(label);
+            userInput = Console.ReadLine() ?? "";
+            isValid = Validation.InRange(userInput, number1,number2,out int result,ErrorMessages["notRange"], ErrorMessages["notNumber"] );
+            sanitized = result;
+        }while(!isValid);
+        return sanitized;
+    }
+    public int Number(string label){
+        string userInput;
+        int sanitized;
+        bool isValid;
+        do{
+            Console.WriteLine(label);
+            userInput = Console.ReadLine() ?? "";
+            isValid = Validation.IsInt(userInput, out int result, ErrorMessages["notNumber"]);
+            sanitized = result;
+        }while(!isValid);
+        return sanitized;
+    }
 }
 
 public static class Validation{
