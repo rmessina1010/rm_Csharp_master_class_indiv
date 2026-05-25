@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/bin/Debug/net8.0/cookierecipe
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/bin/Debug/net8.0/cookierecipe.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/bin/Debug/net8.0/cookierecipe.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/bin/Debug/net8.0/cookierecipe.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/bin/Debug/net8.0/cookierecipe.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/refint/cookierecipe.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/cookierecipe.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cookierecipe/obj/Debug/net8.0/ref/cookierecipe.dll

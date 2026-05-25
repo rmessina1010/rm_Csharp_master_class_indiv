@@ -16,7 +16,7 @@ Dictionary<char, (char Opp,string Label, CalcFoo Foo)> Operations = new Dictiona
 float NumberInput(string order, float memory){
     Console.WriteLine($"Input the {order} number:");
     string? userInput = Console.ReadLine();
-    if (userInput == null || userInput.Trim() == "" ) { return 0; }
+    if (userInput == null || userInput.Trim() == string.Empty ) { return 0; }
     if (char.ToUpper(userInput[0]) == memoryPath.Char) {return  memory; }
     return float.Parse(userInput);
 }

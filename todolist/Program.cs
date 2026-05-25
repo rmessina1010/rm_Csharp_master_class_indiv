@@ -25,7 +25,7 @@ char OptionsMenu(){
 }
 
 bool IsValidTODO( string userInput){
-    if (userInput == ""){
+    if (userInput.Trim() == string.Empty){
         Console.WriteLine("Error: Blank TODO's are not permited!");
         return false;
     }
@@ -74,7 +74,7 @@ void DeleteTODO(){
                     if (!hasTODOs) {return;}
                     Console.WriteLine("Choose a To Do to delete:");
                     string userInput =  Console.ReadLine() ?? "";
-                    if (userInput == ""){ return; }
+                    if (userInput.Trim() == string.Empty){ return; }
                     deleteIndex =  int.Parse(userInput);
                     inRange = deleteIndex > 0 && deleteIndex <= TODOList.Count;
                     if (!inRange) { 

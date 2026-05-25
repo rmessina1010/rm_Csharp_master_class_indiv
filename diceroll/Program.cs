@@ -160,8 +160,8 @@ public class Player {
         string name;
         do{
             Console.WriteLine("Hello there. What is your name?");
-            name = (Console.ReadLine() ?? "").Trim();
-        } while( name == "");
+            name = Console.ReadLine() ?? "";
+        } while( name.Trim() == string.Empty);
         Name = name;
     }
 }
