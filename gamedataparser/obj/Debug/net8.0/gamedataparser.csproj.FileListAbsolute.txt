@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/bin/Debug/net8.0/gamedataparser
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/bin/Debug/net8.0/gamedataparser.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/bin/Debug/net8.0/gamedataparser.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/bin/Debug/net8.0/gamedataparser.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/bin/Debug/net8.0/gamedataparser.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/refint/gamedataparser.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/gamedataparser.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/gamedataparser/obj/Debug/net8.0/ref/gamedataparser.dll
