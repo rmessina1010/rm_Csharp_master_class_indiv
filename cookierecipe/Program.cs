@@ -13,9 +13,9 @@ public class Program{
             Console.WriteLine("Recipe Book 2026!!");
         UserInteraction.DisplayAllRecipes(Book.RecipeBook, Book.MenuList);
         UserInteraction.DisplayMenu("\n\nCreate a new cookie recipe! Select an Ingredient to add:", Book.MenuList);;
-        bool isValid;
+        bool isValid = false;
         do{
-            isValid = UserInteraction.GetUserSelection(itemCount, out int selection);
+            ( isValid,   int selection) = UserInteraction.GetUserSelection(itemCount);
             if (isValid){
                 Book.AddIngredientToRecipe(selection);
             }
@@ -25,7 +25,6 @@ public class Program{
         exit = char.ToUpper(Console.ReadKey().KeyChar);
         }while (exit != 'Y');
         string saveableData = EncodeHander.JSONSerialize(Book.RecipeBook);
-        //Console.WriteLine(saveableData);
         FileHander.Save(saveableData);
     }
 }
@@ -83,12 +82,11 @@ public class RecipeHandler: IMenuContent, IRecipeBook{
 
 public class UserInteraction {
 
-    public  static bool GetUserSelection( int menuItems,  out int selectedIngredient){
+    public  static (bool, int) GetUserSelection( int menuItems){
         Console.WriteLine("Add an ingredient by its ID or type anything else if finished.");
         string userInput = Console.ReadLine() ?? "";
-        bool isValid = Validation.InRange( userInput, 1, menuItems, out int choice);
-        selectedIngredient = choice;
-        return isValid;
+        (bool isValid, int choice) = Validation.InRange( userInput, 1, menuItems);
+        return  (isValid, choice);
     }
 
      public static void DisplayMenu(string label, List<(int Id, string Name, string Instruction)> menuContent){
@@ -123,22 +121,20 @@ public class UserInteraction {
 
 
 public static class Validation{
-    public static bool IsInt(string input, out int validInput, string message=""){
+    public static (bool, int) IsInt(string input, string message=""){
         bool isInt = int.TryParse(input,out int result);
-        validInput = result;
-        if (message != ""  && !isInt){ Console.WriteLine(message); }
-        return isInt;
+         if (message != ""  && !isInt){ Console.WriteLine(message); }
+        return (isInt, result);
     }
 
-    public static bool InRange(string input, int low, int high, out int validInput, string message="", string subErr=""){
-        bool isInt = IsInt(input, out int result,subErr);
-        validInput = result;
-        if (!isInt){ return false;} 
-        if (result >= low && result <= high){ return true;}
-        if (message != "" ){ Console.WriteLine(message);}
-        return false;
-        }
-    
+    public static (bool, int) InRange(string input, int low, int high, string message="", string subErr=""){
+        (bool isInt, int result) = IsInt(input, subErr);
+        if (isInt == true){ 
+            if (result >= low && result <= high){ return (true, result);}
+            if (message != "" ){ Console.WriteLine(message);}
+        }    
+        return (false, result);
+    } 
 }
 
 public   static  class EncodeHander {
