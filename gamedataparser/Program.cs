@@ -26,7 +26,7 @@ void Run(){
         Run();
     }
     catch(JsonException){
-        Console.WriteLine("This file is not pa valid JSON file/format!");
+        Console.WriteLine("This file is not a valid JSON file/format!");
         Run();
     }
     catch(FileNotFoundException){
