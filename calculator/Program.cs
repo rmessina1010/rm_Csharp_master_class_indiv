@@ -1,10 +1,9 @@
 ﻿using MenuPath = (string Label , char Char);
-using CalcFoo = System.Func <float, float, float>;
 
 string AppName = "Calculator 2026";
 MenuPath exitPath =  (Label:"[E]scape", Char: 'E');
 MenuPath memoryPath =  (Label:"<M> key to access Memory", Char: 'M');
-Dictionary<char, (char Opp,string Label, CalcFoo Foo)> Operations = new Dictionary<char, (char Opp, string Label, CalcFoo Foo)>
+var  Operations = new Dictionary<char, (char Opp, string Label, Func<float, float, float> Foo)>
         {
             ['A'] = (Opp: '+', Label: "Add", Foo: (a,b) => a + b  ),
             ['S'] = (Opp: '-', Label: "Substract" , Foo: (a,b) => a - b ),
