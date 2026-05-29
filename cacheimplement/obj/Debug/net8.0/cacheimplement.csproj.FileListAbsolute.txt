@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/bin/Debug/net8.0/cacheimplement
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/bin/Debug/net8.0/cacheimplement.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/bin/Debug/net8.0/cacheimplement.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/bin/Debug/net8.0/cacheimplement.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/bin/Debug/net8.0/cacheimplement.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/refint/cacheimplement.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/cacheimplement.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/cacheimplement/obj/Debug/net8.0/ref/cacheimplement.dll
