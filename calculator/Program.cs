@@ -71,3 +71,8 @@ float RunCalculator( float memory = 0, bool isStart = true){
 
 Console.WriteLine(AppName);
 RunCalculator();
+ 
+Console.WriteLine(new List<string>{"aaa", "b", "c", "dd"}.OrderBy( w=> w.Length).ThenBy(w=>w).First());
+
+
+
