@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/bin/Debug/net8.0/csvreader
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/bin/Debug/net8.0/csvreader.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/bin/Debug/net8.0/csvreader.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/bin/Debug/net8.0/csvreader.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/bin/Debug/net8.0/csvreader.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/refint/csvreader.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/csvreader.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/csvreader/obj/Debug/net8.0/ref/csvreader.dll
