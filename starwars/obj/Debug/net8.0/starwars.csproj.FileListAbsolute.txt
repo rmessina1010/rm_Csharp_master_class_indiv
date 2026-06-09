@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/bin/Debug/net8.0/starwars
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/bin/Debug/net8.0/starwars.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/bin/Debug/net8.0/starwars.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/bin/Debug/net8.0/starwars.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/bin/Debug/net8.0/starwars.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/refint/starwars.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/starwars.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/starwars/obj/Debug/net8.0/ref/starwars.dll
