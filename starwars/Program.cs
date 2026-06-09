@@ -1,5 +1,5 @@
 ﻿using Output.TableOutput;
-
+using Output.UserMenu;
 
 public class Program{
     public static void Main()
@@ -23,6 +23,11 @@ public class Program{
         string[] filter = { "Name", "Class" };
         var filteredPrinter = new TablePrinter<Starship>(fleet, filter);
         filteredPrinter.PrintTable();
+        var userInputMenu = new UserMenu();
+        char userChoice = userInputMenu.RequestOperation();
+        if (userInputMenu.Operations.ContainsKey(userChoice)){
+            Console.WriteLine($"you chose {fleet[0].GetType().GetProperty(userInputMenu.Operations[userChoice].Col)?.GetValue(fleet[0], null)}");
+        }
     }
 }
 public struct Starship

@@ -20,7 +20,7 @@ namespace Output.TableOutput{
                 .ToArray();
 
             var allHeaders = ColumnProperties 
-                .Select(p=>p.Name.PadRight(ColumnWidth));
+                .Select(p=>p.Name.Trim().PadRight(ColumnWidth));
             TableHeader = string.Join("|", allHeaders);
             Divider = new string('_', TableHeader.Length);
         }
