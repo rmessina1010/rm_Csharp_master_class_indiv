@@ -1,8 +1,9 @@
 ﻿using Output.TableOutput;
 using Output.UserMenu;
+using ApiData;
 
 public class Program{
-    public static void Main()
+    public static async Task Main()
     {
         // Creating your test data
         Starship[] fleet = new Starship[]
@@ -12,6 +13,13 @@ public class Program{
             new Starship { Name = "TIE Fighter", Class = "Starfighter", Crew = 1, IsHyperdriveCapable = false },
             new Starship { Name = "Death Star", Class = "Battle Station", Crew = 342953, IsHyperdriveCapable = true }
         };
+
+        IApiDataReader apiDataReader = new ApiDataReader("https://swapi.dev/api/");
+        var apiJsonData = await apiDataReader.Read("https://swapi.dev/api/planets/?format=json");
+        Root apiData = EncodeHander.JSONDeserialize(apiJsonData);
+
+        Console.WriteLine($"{apiData.count} row of data");
+        
 
         // Test Case 1: Print all columns
         Console.WriteLine("--- Full Fleet Report ---");
