@@ -34,8 +34,34 @@ using var handler = new HttpClientHandler
         }
         public static Root JSONDeserialize(string data){
             return JsonSerializer.Deserialize<Root>(data)?? new Root();
+        }     
+    }
+
+    public class StarWarsData{
+        public  StarWarsRow[] TableData {get; init;}
+        public StarWarsData( Root dataList){
+            TableData = dataList.results
+            .Select( item => {
+                bool _;
+                _ = int.TryParse(item.rotation_period, out int rotation);
+                _ = int.TryParse(item.diameter, out int diam);
+                _ = int.TryParse(item.surface_water, out int water);
+                _ = int.TryParse(item.population, out int pop);
+                return new StarWarsRow{
+                 name  = item.name,
+                 rotation_period = rotation,
+                 diameter  =  diam,
+                 surface_water = water,
+                 population = pop
+                };
+            })
+            .ToArray();
         }
     }
+
+    public readonly record struct StarWarsRow(string name, int rotation_period,  int diameter,  int surface_water, int population);
+
+
     public record Result(
         [property: JsonPropertyName("name")] string name,
         [property: JsonPropertyName("rotation_period")] string rotation_period,

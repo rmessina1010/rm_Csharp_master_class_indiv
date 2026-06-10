@@ -17,13 +17,12 @@ public class Program{
         IApiDataReader apiDataReader = new ApiDataReader("https://swapi.dev/api/");
         var apiJsonData = await apiDataReader.Read("https://swapi.dev/api/planets/?format=json");
         Root apiData = EncodeHander.JSONDeserialize(apiJsonData);
-
-        Console.WriteLine($"{apiData.count} row of data");
+        var swPlanets = new StarWarsData(apiData);
         
 
         // Test Case 1: Print all columns
         Console.WriteLine("--- Full Fleet Report ---");
-        var printer = new TablePrinter<Starship>(fleet);
+        var printer = new TablePrinter<StarWarsRow>(swPlanets.TableData);
         printer.PrintTable();
 
         // Test Case 2: Print only specific columns (Whitelist)

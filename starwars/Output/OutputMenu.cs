@@ -7,6 +7,7 @@ public class UserMenu{
         {
             ['P'] = (Col: "population", Label: "Population"),
             ['D'] = (Col: "diameter" , Label: "Diameter"),
+            ['R'] = (Col: "rotation_period", Label: "Rotation Period"),
             ['S'] = (Col: "surface_water", Label: "Surface Water"),
         };
     public  MenuPath exitPath =  (Label:"[E]scape", Char: 'E');
