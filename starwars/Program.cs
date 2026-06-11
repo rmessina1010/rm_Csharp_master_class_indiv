@@ -25,16 +25,11 @@ public class Program{
         Console.WriteLine($"Max {prop} belongs to {maxPlanet.Name}, with {maxPlanet.Val} {maxPlanet.UnitName}");
         
 
-        // Test Case 1: Print all columns
-        Console.WriteLine("--- Full Fleet Report ---");
+
+        Console.WriteLine("--- A Galaxy Far Far Away ---");
         var printer = new TablePrinter<StarWarsRow>(swPlanets.TableData);
         printer.PrintTable();
 
-        // Test Case 2: Print only specific columns (Whitelist)
-        Console.WriteLine("\n--- Name and Class Only ---");
-        string[] filter = { "Name", "Class" };
-        var filteredPrinter = new TablePrinter<Starship>(fleet, filter);
-        filteredPrinter.PrintTable();
         var userInputMenu = new UserMenu();
         char userChoice = userInputMenu.RequestOperation();
         if (userInputMenu.Operations.ContainsKey(userChoice)){
