@@ -22,7 +22,7 @@ public class Program{
 
         string prop = "population";
         var  maxPlanet = PerformSWLogic.getMinMaxSW(prop, swPlanets.TableData);
-        Console.WriteLine($"Max {prop}, {maxPlanet.Name}, with {maxPlanet.Val} {maxPlanet.UnitName}");
+        Console.WriteLine($"Max {prop} belongs to {maxPlanet.Name}, with {maxPlanet.Val} {maxPlanet.UnitName}");
         
 
         // Test Case 1: Print all columns
