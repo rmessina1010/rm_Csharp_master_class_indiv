@@ -1,9 +1,10 @@
 using ApiData;
 
 namespace SWLogic{ 
+    using PlanetStats = (string Name, int Val, string UnitName);
     public static class PerformSWLogic{
 
-            public static (string Name, int Val, string UnitName) getMinMaxSW(string prop, StarWarsRow[] data, bool isMax = true){
+            public static PlanetStats getMinMaxSW(string prop, StarWarsRow[] data, bool isMax = true){
             var  selectors = new Dictionary <string, Func<StarWarsRow, int>>{
                 {"surface_water"   , planet => planet.surface_water},
                 {"population"      , planet => planet.population},

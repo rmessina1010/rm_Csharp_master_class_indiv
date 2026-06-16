@@ -34,6 +34,7 @@ namespace Output.TableOutput{
             foreach (T row in Data){
                 var allCols = ColumnProperties
                     .Select( c => (c.GetValue(row)?.ToString() ?? "").PadRight(ColumnWidth));
+                    // .Select( c => $"{(c.GetValue(row)?.ToString() ?? ""), -21}");
                 Console.WriteLine(string.Join("|", allCols));
             }
         }

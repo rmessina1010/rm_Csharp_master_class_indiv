@@ -1,4 +1,5 @@
 using MenuPath = (string Label , char Char);
+using PlanetStats = (string Name, int Val, string UnitName);
 
 namespace Output.UserMenu{    
 public class UserMenu{
@@ -27,7 +28,11 @@ public class UserMenu{
         }while(!(userInput == exitPath.Char || Operations.ContainsKey(userInput)));
         return userInput;
     }
-}
 
+    public void WriteStats(char userChoice, PlanetStats maxPlanet, PlanetStats minPlanet){
+        Console.WriteLine($"Max {this.Operations[userChoice].Col.Replace("_", " ")} belongs to {maxPlanet.Name}, with {maxPlanet.Val} {maxPlanet.UnitName}");
+        Console.WriteLine($"Min {this.Operations[userChoice].Col.Replace("_", " ")} belongs to {minPlanet.Name}, with {minPlanet.Val} {maxPlanet.UnitName}");
+    }
+}
 
 }
