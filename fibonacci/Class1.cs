@@ -2,6 +2,8 @@
 
 public static class Fibonacci
 {
+    public static readonly int MaxValidNumber = 46;
+
     public static IEnumerable<int> Generate(int n)
     {
         if (n < 0)
@@ -10,7 +12,6 @@ public static class Fibonacci
                 $"{nameof(n)} cannot be smaller than 0.");
         }
 
-        const int MaxValidNumber = 46;
         if (n > MaxValidNumber)
         {
             throw new ArgumentException(

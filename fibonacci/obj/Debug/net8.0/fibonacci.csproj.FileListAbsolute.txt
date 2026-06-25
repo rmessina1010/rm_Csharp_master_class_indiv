@@ -1,0 +1,12 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/bin/Debug/net8.0/fibonacci.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/bin/Debug/net8.0/fibonacci.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/bin/Debug/net8.0/fibonacci.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/refint/fibonacci.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/fibonacci.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/fibonacci/obj/Debug/net8.0/ref/fibonacci.dll
