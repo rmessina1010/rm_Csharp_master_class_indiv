@@ -58,4 +58,12 @@ public class ValidationTest{
 [TestFixture]
 public class UserInputTest{
 
+[TestCase("Ray")]
+[TestCase("Veronica")]
+    public void Player_Construct_Gets_Name( string expected){
+    var input = new StringReader(expected); 
+    Console.SetIn(input);
+    var _cut = new Player();
+    Assert.AreEqual(expected, _cut.Name);
+    }
 }    
