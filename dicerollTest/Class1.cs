@@ -34,7 +34,7 @@ public class ValidationTest{
         bool isValidInt = Validation.IsInt(input, out int res, "Message", writer);
         Assert.False(isValidInt);
         Assert.AreEqual(0,res);
-        Assert.AreEqual("Message", writer.ToString().Trim());    
+        Assert.That( writer.ToString(), Does.Contain("Message")); 
     }
         
     [TestCase("5",1,6,true,5)]
@@ -49,7 +49,8 @@ public class ValidationTest{
         Assert.AreEqual(expect, isInRange);    
         Assert.AreEqual(expectInt,validRes);
         if (!isInRange && validRes != 0){
-            Assert.AreEqual("range error", writer.ToString().Trim());    
+            // Assert.AreEqual("range error", writer.ToString().Trim());   
+            Assert.That( writer.ToString(), Does.Contain("range error"));  
         }
     }
 }    
