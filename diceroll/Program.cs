@@ -30,6 +30,12 @@ public interface IRoll
     float Probability();
 }
 
+public interface IConsoleWriter
+{
+    void WriteLine(string message);
+}
+
+
 public class Die: IRoll{
     public int Sides {  get; init; }
     public  int[] _appearances {private set; get;}
@@ -146,19 +152,25 @@ public class UserInput{
 }
 
 public static class Validation{
-    public static bool IsInt(string input, out int validInput, string message=""){
+    public static bool IsInt(string input, out int validInput, string message="",  TextWriter writer = null){
+        
         bool isInt = int.TryParse(input,out int result);
         validInput = result;
-        if (message != ""  && !isInt){ Console.WriteLine(message); }
+        if (message != ""  && !isInt){ 
+            writer ??= Console.Out;
+            writer.WriteLine(message); 
+        }
         return isInt;
     }
-
-    public static bool InRange(string input, int low, int high, out int validInput, string message="", string subErr=""){
+    public static bool InRange(string input, int low, int high, out int validInput, string message="", string subErr="",  TextWriter writer = null){
         bool isInt = IsInt(input, out int result,subErr);
         validInput = result;
         if (!isInt){ return false;} 
         if (result >= low && result <= high){ return true;}
-        if (message != "" ){ Console.WriteLine(message);}
+        if (message != "" ){ 
+            writer ??= Console.Out;
+            writer.WriteLine(message);
+        }
         return false;
         }
     
