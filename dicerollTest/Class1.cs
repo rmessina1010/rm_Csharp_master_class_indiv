@@ -6,7 +6,45 @@ namespace dicerollTest;
 public class DiceTest
 {
 
+    private Die _cut;
+    private int Sides;
+
+    [SetUp]
+    public void SetUp(){
+        _cut= new Die(6);
+        Sides = 6;
+    }
+    
+
+    [TestCase(3)]
+    [TestCase(5)]
+    public void Die_Roll_Returns_Given_Side_When_InRange(int? expect){
+         Assert.AreEqual(expect.Value, _cut.Roll(expect.Value));
+    }
+
+    [TestCase(7)]
+    [TestCase(0)]
+    [TestCase(null)]
+    public void Die_Roll_Returns_Random_Valid_Side_When_Not_InRange_Or_Null(int? target){
+         Assert.That(_cut.Roll(target),Is.InRange(1, Sides));
+    }
+    
+    [Test]
+    public void Die_Roll_Returns_Random_Valid_Side_When_No_Args_Passed(){
+         Assert.That(_cut.Roll(),Is.InRange(1, Sides));
+    }
+
+    [Test]
+    public void Apperance_Tracks_Die_Rolls(){
+        _cut.Roll(2);
+        _cut.Roll(2);
+        _cut.Roll(2);
+        _cut.Roll(5);
+        Assert.AreEqual(3,_cut._appearances[1]);
+        Assert.AreEqual(1,_cut._appearances[4]);
+    }
 }
+
 
 [TestFixture]
 public class ValidationTest{

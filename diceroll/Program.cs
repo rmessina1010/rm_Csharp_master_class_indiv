@@ -50,9 +50,9 @@ public class Die: IRoll{
     }
     
     public int Roll( int? df = null){
-        int roll =  (df is not null  && (df > 0 || df <= Sides)) ?
-          df.Value : 
-          Randomness.Next(Sides);
+        int roll =  (df is not null && (df.Value > 0 && df.Value <= Sides)) ?
+        df.Value - 1 : 
+        Randomness.Next(Sides);
         _appearances[roll]++;
         OnFace = roll+1;
         return OnFace ;
