@@ -10,7 +10,7 @@ namespace Diceroll{
         //         @die.Roll();
         //    }
         //     int side =0;
-        //    foreach (int @count in @die._apperances){
+        //    foreach (int @count in @die._appearances){
         //         side++;
         //         Console.WriteLine( $"side {side} happened {@count} times out of {rolls}");
         //    }
@@ -20,22 +20,34 @@ namespace Diceroll{
     }
 }
 
-public class Die{
+
+public interface IRoll
+{
+    int Sides { get; }
+    int OnFace { get; }
+    int[] _appearances { get;}
+    int Roll( int? d);
+    float Probability();
+}
+
+public class Die: IRoll{
     public int Sides {  get; init; }
-    public  int[] _apperances {private set; get;}
+    public  int[] _appearances {private set; get;}
 
     public int OnFace{ get; private set;} 
      private Random Randomness;
 
     public Die (int sides){
         Sides = sides;
-        _apperances = new int[sides];
+        _appearances = new int[sides];
         Randomness = Random.Shared;
     }
     
-    public int Roll(){
-        int roll =  Randomness.Next(Sides);
-        _apperances[roll]++;
+    public int Roll( int? df = null){
+        int roll =  (df is not null  && (df > 0 || df <= Sides)) ?
+          df.Value : 
+          Randomness.Next(Sides);
+        _appearances[roll]++;
         OnFace = roll+1;
         return OnFace ;
    }
