@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/bin/Debug/net8.0/14_DiceRollGameToBeTested
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/bin/Debug/net8.0/14_DiceRollGameToBeTested.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/bin/Debug/net8.0/14_DiceRollGameToBeTested.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/bin/Debug/net8.0/14_DiceRollGameToBeTested.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/bin/Debug/net8.0/14_DiceRollGameToBeTested.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/refint/14_DiceRollGameToBeTested.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/14_DiceRollGameToBeTested.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/14_DiceRollGameToBeTested/obj/Debug/net8.0/ref/14_DiceRollGameToBeTested.dll
