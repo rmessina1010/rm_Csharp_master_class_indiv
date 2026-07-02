@@ -124,4 +124,12 @@ public class GameTest{
         if (char.ToUpper(userResponse) == 'Y') Assert.IsTrue(gameInstance);
         if (char.ToUpper(userResponse) == 'N') Assert.IsFalse(gameInstance);
     }
+
+    public void Play_PlayAgain_LoopsUntilYOrN(char userResponse){
+        var inputs = new Queue<char>(new []{'x','r','v','t','N'});
+        object[] parameters = {"ray", (Func<char>)(() =>  char.ToUpper(inputs.Dequeue())), 0};
+        var gameInstance = (bool)_playAgainMethod.Invoke(_cut, parameters);  
+        Assert.IsTrue(gameInstance);
+     }
+
 }
