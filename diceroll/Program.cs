@@ -93,18 +93,18 @@ public class Game {
                 if (i-1 > 0){ Console.WriteLine($"{i-1} guess{ (i-1 != 1 ? "es":"")} left..."); }
             }
             if (!win) { Console.WriteLine($"The number was {@Die.OnFace}. You lost!");}
-            again =  PlayAgain(player.Name);
+            again =  PlayAgain(player.Name, () => char.ToUpper(Console.ReadKey().KeyChar));
         }
         Console.WriteLine($"OK. Goodbye, {player.Name}");
 
     }
 
-    private bool PlayAgain(string name, int delay = 2000){
+    private bool PlayAgain(string name, Func<char> reader, int delay = 2000){
         Thread.Sleep(delay);
         char choice;
         Console.WriteLine($"Would you like to play again, {name},[y/n]?");
         do{
-            choice = char.ToUpper(Console.ReadKey().KeyChar);
+            choice = reader();
         }while (choice != 'Y' && choice != 'N' ) ;
         Console.WriteLine();
         return choice == 'Y';

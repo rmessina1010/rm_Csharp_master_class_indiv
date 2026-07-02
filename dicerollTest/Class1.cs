@@ -114,13 +114,14 @@ public class GameTest{
     MethodInfo _playAgainMethod =  typeof(Game).GetMethod("PlayAgain", BindingFlags.NonPublic | BindingFlags.Instance);
 
     
-    // [TestCase ('x')]
-    // [TestCase ('y')]
     [TestCase ('Y')]
-    // [TestCase ('N')]
-    public void Play_PlayAgain_ReturnsTrueForY(char userResponse){
-        object[] parameters = {"ray",0};
+    [TestCase ('y')]
+    [TestCase ('N')]
+    [TestCase ('n')]
+    public void Play_PlayAgain_ReturnsTrueForY_ReturnsFalseForN(char userResponse){
+        object[] parameters = {"ray", (Func<char>)(() =>  char.ToUpper(userResponse)), 0};
         var gameInstance = (bool)_playAgainMethod.Invoke(_cut, parameters);  
-        Assert.IsTrue(gameInstance);
+        if (char.ToUpper(userResponse) == 'Y') Assert.IsTrue(gameInstance);
+        if (char.ToUpper(userResponse) == 'N') Assert.IsFalse(gameInstance);
     }
 }
