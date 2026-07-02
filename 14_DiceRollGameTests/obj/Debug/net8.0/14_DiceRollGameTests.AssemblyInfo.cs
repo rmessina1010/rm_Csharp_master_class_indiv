@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("14_DiceRollGameTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c07db4a996021a19821992260d55f53127dc5868")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a68197797bca7d1be615910d02ae28649cfa9d9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("14_DiceRollGameTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("14_DiceRollGameTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

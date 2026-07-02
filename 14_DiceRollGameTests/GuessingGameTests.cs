@@ -11,6 +11,19 @@ public class GuessingGamesTests{
     private Mock<IUserCommunication> _userCommunicationMock;
     private GuessingGame _cut;
 
+    private void RollDice3TimesAndWin(){
+         const int rollReturnValue = 3;
+        _diceMock
+        .Setup( mock => mock.Roll())
+        .Returns(rollReturnValue);
+        _userCommunicationMock
+        .SetupSequence(mock => mock.ReadInteger(It.IsAny<string>()))
+        .Returns(rollReturnValue-2)
+        .Returns(rollReturnValue-1)
+        .Returns(rollReturnValue);
+}
+
+
     [SetUp]
     public void SetUp(){
         _userCommunicationMock = new Mock<IUserCommunication>();
@@ -53,15 +66,7 @@ public class GuessingGamesTests{
 
     [Test]
         public void Play_ReturnsVictory_IfUserGuessesRightOnThirdTry(){
-        const int rollReturnValue = 3;
-        _diceMock
-        .Setup( mock => mock.Roll())
-        .Returns(rollReturnValue);
-        _userCommunicationMock
-        .SetupSequence(mock => mock.ReadInteger(It.IsAny<string>()))
-        .Returns(rollReturnValue-2)
-        .Returns(rollReturnValue-1)
-        .Returns(rollReturnValue);
+        RollDice3TimesAndWin();
         var gameResult = _cut.Play();
 
         Assert.AreEqual(GameResult.Victory, gameResult);
@@ -93,4 +98,30 @@ public class GuessingGamesTests{
         .Verify( mock=> mock.ShowMessage(expectedMessage)); 
     }
 
+
+        [Test]
+        public void Play_AsksForNumber_3Times(){
+            
+        RollDice3TimesAndWin();
+
+        var gameResult = _cut.Play();
+
+        _userCommunicationMock.Verify( mock => mock.ReadInteger("Enter a number:"), Times.Exactly(3));
+    }
+
+        [Test]
+        public void Play_DisplaysWrongNumberMessageTwice_WinsIn3Times(){
+            
+        RollDice3TimesAndWin();
+
+        var gameResult = _cut.Play();
+
+        _userCommunicationMock.Verify( mock => mock.ShowMessage("Wrong number."), Times.Exactly(2));
+    }
+
+       [Test]
+        public void Play_DisplaysWelcome_OneTimeOnly(){
+        var gameResult = _cut.Play();
+        _userCommunicationMock.Verify( mock => mock.ShowMessage("Dice rolled. Guess what number it shows in 3 tries."), Times.Once());
+    }
 }
