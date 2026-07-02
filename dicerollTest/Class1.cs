@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Reflection;
 using Diceroll; 
 
 namespace dicerollTest;
@@ -105,3 +106,21 @@ public class UserInputTest{
     Assert.AreEqual(expected, _cut.Name);
     }
 }    
+
+[TestFixture]
+public class GameTest{
+
+    Game _cut = new Game(3,6);
+    MethodInfo _playAgainMethod =  typeof(Game).GetMethod("PlayAgain", BindingFlags.NonPublic | BindingFlags.Instance);
+
+    
+    // [TestCase ('x')]
+    // [TestCase ('y')]
+    [TestCase ('Y')]
+    // [TestCase ('N')]
+    public void Play_PlayAgain_ReturnsTrueForY(char userResponse){
+        object[] parameters = {"ray",0};
+        var gameInstance = (bool)_playAgainMethod.Invoke(_cut, parameters);  
+        Assert.IsTrue(gameInstance);
+    }
+}
