@@ -69,34 +69,36 @@ public class Game {
         @Die = new Die(sides);
     }
 
-    public void Play(){
-
+    public bool PlayerGuesses (Die die, UserInput userInput, int tries, string name){
         int playerChoice;
+        for (int i = tries; i > 0; i--){
+                playerChoice = userInput.Range(1,die.Sides, $"Pick a number between 1 and {die.Sides}, {name}");
+                if (die.OnFace == playerChoice){
+                     return true;
+                }
+                if (i-1 > 0){ Console.WriteLine($"{i-1} guess{ (i-1 != 1 ? "es":"")} left..."); }
+            }
+            return false;
+    }
+
+    public void Play(){
         Player player = new Player();
         bool again = true;
         bool win;
+        string gameOutcomeMessage;
         UserInput @UserInput = new UserInput(new Dictionary<string, string>{
             {"notNumber" , "Enter a valid integer number!"},
             {"notRange"  , "This choice is not in range!"}
         });
 
         while (again){
-            win = false;
             @Die.Roll();
-            for (int i = Tries; i > 0; i--){
-                playerChoice = @UserInput.Range(1,@Die.Sides, $"Pick a number between 1 and {@Die.Sides}, {player.Name}");
-                if (@Die.OnFace == playerChoice){
-                Console.WriteLine($"OMG, {player.Name}, you won!!");
-                    win = true;
-                    break;
-                }
-                if (i-1 > 0){ Console.WriteLine($"{i-1} guess{ (i-1 != 1 ? "es":"")} left..."); }
-            }
-            if (!win) { Console.WriteLine($"The number was {@Die.OnFace}. You lost!");}
+            win = PlayerGuesses(@Die, @UserInput,Tries, player.Name);
+            gameOutcomeMessage = GenerateOutcomeMessage(win, @Die.OnFace, player.Name);
+            Console.WriteLine(gameOutcomeMessage);
             again =  PlayAgain(player.Name, () => char.ToUpper(Console.ReadKey().KeyChar));
         }
         Console.WriteLine($"OK. Goodbye, {player.Name}");
-
     }
 
     private bool PlayAgain(string name, Func<char> reader, int delay = 2000){
@@ -108,6 +110,12 @@ public class Game {
         }while (choice != 'Y' && choice != 'N' ) ;
         Console.WriteLine();
         return choice == 'Y';
+    }
+
+    private string GenerateOutcomeMessage(bool win, int onFace, string name){
+        return win ? 
+            $"OMG, {name}, you won!!"
+            : $"The number was {onFace}. You lost!";
     }
     
 }
