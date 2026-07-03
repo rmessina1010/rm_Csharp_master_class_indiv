@@ -44,6 +44,11 @@ public class DiceTest
         Assert.AreEqual(3,_cut._appearances[1]);
         Assert.AreEqual(1,_cut._appearances[4]);
     }
+    
+    [Test]
+    public void Probability_ReturnsOneSixth_ForASixSidedDie(){
+        Assert.AreEqual( 1/6f ,_cut.Probability());
+    }
 }
 
 
@@ -62,7 +67,6 @@ public class ValidationTest{
         Assert.True(isValidInt);
         Assert.True(  expect == res);
         Assert.AreEqual("", writer.ToString().Trim());    
-
     }
     
     [TestCase("Ray")]
@@ -131,7 +135,7 @@ public class GameTest{
         object[] parameters = {"ray", (Func<char>)(() =>  char.ToUpper(inputs.Dequeue())), 0};
         var gameInstance = (bool)_playAgainMethod.Invoke(_cut, parameters);  
         Assert.IsTrue(gameInstance);
-     }
+    }
      
     [Test]
     public void GenerateOutcomeMessage_OutputsWinMessage_WhenTrue(){
