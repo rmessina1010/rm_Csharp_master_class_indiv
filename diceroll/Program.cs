@@ -35,6 +35,9 @@ public interface IConsoleWriter
     void WriteLine(string message);
 }
 
+public interface IRangedInput{
+    public int Range(int number1, int number2, string label);
+}
 
 public class Die: IRoll{
     public int Sides {  get; init; }
@@ -69,7 +72,7 @@ public class Game {
         @Die = new Die(sides);
     }
 
-    public bool PlayerGuesses (Die die, UserInput userInput, int tries, string name){
+    public bool PlayerGuesses (Die die, IRangedInput userInput, int tries, string name){
         int playerChoice;
         for (int i = tries; i > 0; i--){
                 playerChoice = userInput.Range(1,die.Sides, $"Pick a number between 1 and {die.Sides}, {name}");
@@ -120,7 +123,7 @@ public class Game {
     
 }
 
-public class UserInput{
+public class UserInput : IRangedInput{
 
         private Dictionary<string,string> ErrorMessages {get; init;}
 

@@ -112,6 +112,7 @@ public class GameTest{
 
     Game _cut = new Game(3,6);
     MethodInfo _playAgainMethod =  typeof(Game).GetMethod("PlayAgain", BindingFlags.NonPublic | BindingFlags.Instance);
+    MethodInfo _gameOutputMessage =  typeof(Game).GetMethod("GenerateOutcomeMessage", BindingFlags.NonPublic | BindingFlags.Instance);
 
     
     [TestCase ('Y')]
@@ -131,5 +132,46 @@ public class GameTest{
         var gameInstance = (bool)_playAgainMethod.Invoke(_cut, parameters);  
         Assert.IsTrue(gameInstance);
      }
+     
+    [Test]
+    public void GenerateOutcomeMessage_OutputsWinMessage_WhenTrue(){
+        object[] parameters = {true, 0, "Ray"};
+        var message = (string)_gameOutputMessage.Invoke(_cut, parameters);  
+        Assert.AreEqual("OMG, Ray, you won!!",message);    
+    }
+    [Test]
+    public void GenerateOutcomeMessage_OutputsLoseMessage_WhenFalse(){
+        object[] parameters = {false, 6, "--"};
+        var message = (string)_gameOutputMessage.Invoke(_cut, parameters);  
+        Assert.AreEqual("The number was 6. You lost!",message);    
+     }
+    
+    [TestCase (new int[]{3},3 )]
+    [TestCase (new int[]{1,3},3 )]
+    [TestCase (new int[]{1,2,3},3 )]    
+    [TestCase (new int[]{1,2,5,3},3 )]
+    public void PlayerGuesses_returnTrue_IfGuessedBeforeHittingRangeLimit(int[] userInputs, int diceRoll){
+        Die die = new Die(6);
+        die.Roll(diceRoll);
+        bool isWin = _cut.PlayerGuesses(die, new MockUserInput(userInputs),3, "Ray");  
+        if( userInputs.Length > _cut.Tries ){
+            Assert.IsFalse(isWin);    
+        } else {
+            Assert.IsTrue(isWin);    
+        }
+     }
+}
 
+
+class MockUserInput : IRangedInput{
+
+    private IEnumerator<int> _values;
+    public MockUserInput(IEnumerable<int> values){
+        _values = values.GetEnumerator();
+    }
+    public int Range(int number1, int number2, string label=""){
+        if (!_values.MoveNext()) { throw new InvalidOperationException("No more values.");}
+        return _values.Current;
+    }
+    
 }
