@@ -1,33 +1,66 @@
 namespace passwordgen{
 
-public static class Pwd
+public  class PasswordGenerator
 {
-    private static readonly Random rand = new Random();
 
-    public static string Generate(
-        int left, int right, bool useSpecial)
+    private readonly IRandom _random; 
+    public PasswordGenerator(IRandom random){
+        _random = random;
+    }
+
+    public  string Generate(
+        int minLength, int maxLength, bool shallUseSpecialCharacters)
     {
-        //validate max and min length
-        if (left < 1)
+        Validate(minLength,maxLength);
+        var passwordLength =  setPasswordLengh(minLength, maxLength + 1);
+        return GeneratePasswordString( passwordLength, shallUseSpecialCharacters); 
+    }
+
+    private static void Validate(int minLength, int maxLength){
+        if (minLength < 1)
         {
             throw new ArgumentOutOfRangeException(
-                $"leftRange must be greater than 0");
+                $"{nameof(minLength)}   must be greater than 0");
         }
-        if (right < left)
+        if (maxLength < minLength)
         {
             throw new ArgumentOutOfRangeException(
-                $"leftRange must be smaller than rightRange");
+                $"{nameof(minLength)}  must be smaller than {nameof(maxLength)} ");
         }
+    }
 
-        //randomly pick the length of password between left and right range
-        var l = rand.Next(left, right + 1);
+    private int setPasswordLengh(int minLength, int maxLength){
+        return _random.Next(minLength, maxLength + 1);
+    }
 
-        //generate random string
-        var chars = useSpecial ?
+    private string GeneratePasswordString( 
+        int passwordLength,
+        bool shallUseSpecialCharacters)
+    {
+        var characterSet = shallUseSpecialCharacters ?
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=" :
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-        return new string(Enumerable.Repeat(chars, l).Select(chars => chars[rand.Next(chars.Length)]).ToArray());
+        return new string(Enumerable
+            .Repeat(characterSet, passwordLength)
+            .Select(charSet => charSet[_random
+            .Next(charSet.Length)])
+            .ToArray());
     }
 }
+}
+
+
+public interface IRandom{
+     int Next(int min, int max);
+     int Next(int max);
+}
+
+public class RandomWrapper : IRandom{
+    private readonly Random _random = new Random();
+    public int Next  (int min, int max){
+        return _random.Next(min,max);
+    }
+    public  int Next  (int max){
+        return _random.Next(max);  
+    }
 }
