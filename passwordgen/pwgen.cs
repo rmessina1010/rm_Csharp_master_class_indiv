@@ -30,7 +30,7 @@ public  class PasswordGenerator
     }
 
     private int setPasswordLengh(int minLength, int maxLength){
-        return _random.Next(minLength, maxLength + 1);
+        return _random.Next(minLength, maxLength);
     }
 
     private string GeneratePasswordString( 
@@ -42,8 +42,7 @@ public  class PasswordGenerator
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         return new string(Enumerable
             .Repeat(characterSet, passwordLength)
-            .Select(charSet => charSet[_random
-            .Next(charSet.Length)])
+            .Select(charSet => charSet[_random.Next(charSet.Length)])
             .ToArray());
     }
 }
