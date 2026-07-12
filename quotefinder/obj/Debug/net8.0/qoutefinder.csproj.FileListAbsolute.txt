@@ -1,0 +1,5 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/qoutefinder/obj/Debug/net8.0/qoutefinder.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/qoutefinder/obj/Debug/net8.0/qoutefinder.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/qoutefinder/obj/Debug/net8.0/qoutefinder.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/qoutefinder/obj/Debug/net8.0/qoutefinder.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/qoutefinder/obj/Debug/net8.0/qoutefinder.sourcelink.json

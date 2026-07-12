@@ -1,0 +1,15 @@
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.GeneratedMSBuildEditorConfig.editorconfig
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.AssemblyInfoInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.AssemblyInfo.cs
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.csproj.CoreCompileInputs.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.sourcelink.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/bin/Debug/net8.0/quotefinder
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/bin/Debug/net8.0/quotefinder.deps.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/bin/Debug/net8.0/quotefinder.runtimeconfig.json
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/bin/Debug/net8.0/quotefinder.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/bin/Debug/net8.0/quotefinder.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/refint/quotefinder.dll
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.pdb
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/quotefinder.genruntimeconfig.cache
+/Users/macg4/Desktop/csharp/rm_Csharp_master_class_indiv/quotefinder/obj/Debug/net8.0/ref/quotefinder.dll
