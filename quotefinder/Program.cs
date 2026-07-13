@@ -1,34 +1,33 @@
 ﻿// using QuoteFinder.UserInteraction;
+using System.Net.Http;
+using Models.Datum;
+using System.Text.Json;
 
 public class Program{
 
-    public static void Main(){
+    public static async Task Main(){
         var word = UserInteraction.ReadValidWord( "What word are you looking for?");
         var pages =  UserInteraction.ReadInteger( "How many pages do you want to read");
         var limit =  UserInteraction.ReadInteger( "How many quotes per page");
-        // var multithred =  UserInteraction.ReadBool( "Use multi-threading [y/n]");
+        // var multithred =  UserInteraction.ReadBool( "Use multi-threading [y/n]");clear
+
+        Console.WriteLine("Fetching data...");
+        List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
+        Console.WriteLine("Data is ready");
+    }
+
+    public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
+        var results = new List<string>();
+        var quotesApiDataReader = new  QuotesApiDataReader();
+        for (int i =0; i < pages ; i++){
+            string pageDataJSON = await quotesApiDataReader.Read(i+1, limit);
+            results.Add(pageDataJSON);
+        }
+
+        return results; 
     }
 }
 public static class UserInteraction{
-    public  static T GetInput<T>( string prompt = ""){
-        if (prompt != "") { Console.WriteLine($"{prompt}?"); }
-        if (typeof (T) == typeof(char)){
-            return (T)(object)Console.ReadKey().KeyChar;
-        }
-        string rawInput= Console.ReadLine();
-        if (typeof (T) == typeof(string)){
-            return (T)(object) rawInput;
-        }
-        if (typeof (T) == typeof(int)){
-            int.TryParse(rawInput, out int anInt);
-            return (T)(object) anInt;
-        }     
-        if (typeof (T) == typeof(double)){
-            return (T)(object) double.Parse(rawInput);
-        }        
-        throw new NotSupportedException($"Type {typeof(T).Name} is not supported.");
-    }
-
     public static string ReadValidWord(string prompt){
         Console.WriteLine(prompt);
         string word;
@@ -55,4 +54,33 @@ public static class UserInteraction{
         var input = Console.ReadLine();
         return input == "y";
     }
+}
+
+public class QuotesApiDataReader : IQuotesApiDataReader{
+    private HttpClient _httpClient = new HttpClient();
+
+    public async Task<string> Read (int page, int limit){
+        string endpoint = $"https://quotegarden.onrender.com/api/v3/quotes?limit={limit}&page={page}";
+        HttpResponseMessage  response = await _httpClient.GetAsync(endpoint);
+        response.EnsureSuccessStatusCode();
+
+        return await response.Content.ReadAsStringAsync();
+    }
+
+}
+
+public interface IQuotesApiDataReader{
+    Task<string> Read (int page , int limit);
+}
+
+public class QuoteListProcessor{
+    private  Datum[] _deserializedDatums;
+    public  async void DeserializeDataList(List<string> data){
+    int listSize = data.Count();
+    _deserializedDatums = new Datum[listSize];
+    for( int i=0; i < listSize; i++ ){
+        _deserializedDatums[i] = JsonSerializer.Deserialize<Datum>(data[i]);
+    }
+}
+
 }
