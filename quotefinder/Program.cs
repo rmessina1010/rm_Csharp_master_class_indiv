@@ -17,14 +17,13 @@ public class Program{
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
-        var results = new List<string>();
+        var tasks = new Task<string>[pages];
         var quotesApiDataReader = new  QuotesApiDataReader();
         for (int i =0; i < pages ; i++){
-            string pageDataJSON = await quotesApiDataReader.Read(i+1, limit);
-            results.Add(pageDataJSON);
+            tasks[i] = quotesApiDataReader.Read(i+1, limit);
         }
-
-        return results; 
+        Task.WaitAll(tasks);
+        return tasks.Select( tasks => tasks.Result).ToList(); 
     }
 }
 public static class UserInteraction{
@@ -56,7 +55,7 @@ public static class UserInteraction{
     }
 }
 
-public class QuotesApiDataReader : IQuotesApiDataReader{
+public class QuotesApiDataReader: IQuotesApiDataReader{
     private HttpClient _httpClient = new HttpClient();
 
     public async Task<string> Read (int page, int limit){
@@ -66,7 +65,6 @@ public class QuotesApiDataReader : IQuotesApiDataReader{
 
         return await response.Content.ReadAsStringAsync();
     }
-
 }
 
 public interface IQuotesApiDataReader{
