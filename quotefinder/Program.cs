@@ -14,6 +14,10 @@ public class Program{
         Console.WriteLine("Fetching data...");
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
         Console.WriteLine("Data is ready");
+        
+    var  ai = new QuoteListProcessor();
+    Console.WriteLine(ai.ContainsWord("I went to Lola with my mum and my mum met everyone", word)? "yes":"no");
+
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
@@ -22,8 +26,10 @@ public class Program{
         for (int i =0; i < pages ; i++){
             tasks[i] = quotesApiDataReader.Read(i+1, limit);
         }
-        Task.WaitAll(tasks);
-        return tasks.Select( tasks => tasks.Result).ToList(); 
+        // Task.WaitAll(tasks); // is blocking;
+        // return tasks.Select( tasks => tasks.Result).ToList(); 
+
+        return (await Task.WhenAll(tasks)).ToList(); // note needs: WhenAll is awaited, returns  array
     }
 }
 public static class UserInteraction{
@@ -73,12 +79,18 @@ public interface IQuotesApiDataReader{
 
 public class QuoteListProcessor{
     private  Datum[] _deserializedDatums;
+    private  char[] _splitArray = new [] {' ', '.',',',';','!','?',':'};
     public  async void DeserializeDataList(List<string> data){
-    int listSize = data.Count();
-    _deserializedDatums = new Datum[listSize];
-    for( int i=0; i < listSize; i++ ){
-        _deserializedDatums[i] = JsonSerializer.Deserialize<Datum>(data[i]);
+        int listSize = data.Count();
+        _deserializedDatums = new Datum[listSize];
+        for( int i=0; i < listSize; i++ ){
+            _deserializedDatums[i] = JsonSerializer.Deserialize<Datum>(data[i]);
+        }
     }
-}
+
+    public bool ContainsWord (string input, string requiredWord){
+        var split = input.Split(_splitArray, StringSplitOptions.RemoveEmptyEntries);
+        return split.Any(word => string.Equals(word, requiredWord, StringComparison.OrdinalIgnoreCase));
+    }
 
 }
