@@ -14,10 +14,11 @@ public class Program{
         Console.WriteLine("Fetching data...");
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
         Console.WriteLine("Data is ready");
-        
-    var  ai = new QuoteListProcessor();
-    Console.WriteLine(ai.ContainsWord("I went to Lola with my mum and my mum met everyone", word)? "yes":"no");
 
+        var quoteListProcessor = new QuoteListProcessor();
+        //Console.WriteLine( quoteListProcessor.ContainsWord("'Age' is the acceptance of a term of years. But maturity is the glory of years.", word)? "yes":"no");
+        quoteListProcessor.DeserializeDataList(data);
+        quoteListProcessor.ProcessAllPages(word, new UserInteraction());
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
@@ -32,7 +33,7 @@ public class Program{
         return (await Task.WhenAll(tasks)).ToList(); // note needs: WhenAll is awaited, returns  array
     }
 }
-public static class UserInteraction{
+public class UserInteraction : IUserInteractor{
     public static string ReadValidWord(string prompt){
         Console.WriteLine(prompt);
         string word;
@@ -45,9 +46,9 @@ public static class UserInteraction{
     public static bool isValidWord( string input){
         return input is not null && input.Length>0 && input.All(char.IsLetter);
     }
-    public static int ReadInteger(string message)
+    public static int ReadInteger(string prompt)
     {
-        Console.WriteLine(message);
+        Console.WriteLine(prompt);
         int result;
         while (!int.TryParse(Console.ReadLine(), out result)){};
         return result;
@@ -58,6 +59,10 @@ public static class UserInteraction{
         Console.WriteLine($"{message} ('y' for 'yes', anything else for 'no')");
         var input = Console.ReadLine();
         return input == "y";
+    }
+
+    public void PrintMessage(string message){
+        Console.WriteLine(message);
     }
 }
 
@@ -77,15 +82,44 @@ public interface IQuotesApiDataReader{
     Task<string> Read (int page , int limit);
 }
 
+public interface IUserInteractor{
+    void PrintMessage ( string Message);
+}
+
 public class QuoteListProcessor{
-    private  Datum[] _deserializedDatums;
-    private  char[] _splitArray = new [] {' ', '.',',',';','!','?',':'};
+    private  Root[] _deserializedRoots;
+    private  char[] _splitArray = new [] {' ', '.',',',';','!','?',':','\''};
     public  async void DeserializeDataList(List<string> data){
         int listSize = data.Count();
-        _deserializedDatums = new Datum[listSize];
+        _deserializedRoots = new Root[listSize];
         for( int i=0; i < listSize; i++ ){
-            _deserializedDatums[i] = JsonSerializer.Deserialize<Datum>(data[i]);
+            _deserializedRoots[i] = JsonSerializer.Deserialize<Root>(data[i]);
         }
+    }
+    
+    public void ProcessAllPages( string word, IUserInteractor interactor){
+        for (int i = 0, l = _deserializedRoots.Count(); i < l; i++ ){
+            ProcessPage(i+1, word, interactor);
+        }
+    }
+
+    public void ProcessPage(int page, string word, IUserInteractor interactor){
+
+        var pageCt = _deserializedRoots.Count();
+        var root = !( pageCt < 1  || page < 1 || page > pageCt) ?
+             _deserializedRoots[page - 1]
+             : null ;
+        var quoteWithWord = root.data?
+            .Where( quoteWithWord => (ContainsWord(quoteWithWord.quoteText, word)))
+            .OrderBy(quote => quote.quoteText.Length)
+            .FirstOrDefault();
+        if (quoteWithWord is not null){
+            interactor.PrintMessage($"{quoteWithWord.quoteText} -- {quoteWithWord.quoteAuthor}");
+        }
+        else{
+            interactor.PrintMessage($"No quotes found on page {page}.");
+        }
+
     }
 
     public bool ContainsWord (string input, string requiredWord){
