@@ -7,12 +7,12 @@ public class Program{
 
     public static async Task Main(){
         
-        var interactor = new UserInteraction();
+        var interactor         = new UserInteraction();
         var quoteListProcessor = new QuoteListProcessor(interactor);
-        var word  =  interactor.ReadValidWord( "What word are you looking for?");
-        var pages = interactor.ReadInteger( "How many pages do you want to read");
-        var limit = interactor.ReadInteger( "How many quotes per page");
-        // var multithred =  UserInteraction.ReadBool( "Use multi-threading [y/n]");clear
+        var word               =  interactor.ReadValidWord( "What word are you looking for?");
+        var pages              = interactor.ReadInteger( "How many pages do you want to read");
+        var limit              = interactor.ReadInteger( "How many quotes per page");
+        var multithred         = interactor.ReadBool( "Use multi-threading [y/n]");
 
         Console.WriteLine("Fetching data...");
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
