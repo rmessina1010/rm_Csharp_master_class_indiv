@@ -6,19 +6,21 @@ using System.Text.Json;
 public class Program{
 
     public static async Task Main(){
-        var word = UserInteraction.ReadValidWord( "What word are you looking for?");
-        var pages =  UserInteraction.ReadInteger( "How many pages do you want to read");
-        var limit =  UserInteraction.ReadInteger( "How many quotes per page");
+        
+        var interactor = new UserInteraction();
+        var quoteListProcessor = new QuoteListProcessor(interactor);
+        var word  =  interactor.ReadValidWord( "What word are you looking for?");
+        var pages = interactor.ReadInteger( "How many pages do you want to read");
+        var limit = interactor.ReadInteger( "How many quotes per page");
         // var multithred =  UserInteraction.ReadBool( "Use multi-threading [y/n]");clear
 
         Console.WriteLine("Fetching data...");
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
         Console.WriteLine("Data is ready");
 
-        var quoteListProcessor = new QuoteListProcessor();
         //Console.WriteLine( quoteListProcessor.ContainsWord("'Age' is the acceptance of a term of years. But maturity is the glory of years.", word)? "yes":"no");
         quoteListProcessor.DeserializeDataList(data);
-        quoteListProcessor.ProcessAllPages(word, new UserInteraction());
+        quoteListProcessor.ProcessAllPages(word);
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
@@ -27,14 +29,14 @@ public class Program{
         for (int i =0; i < pages ; i++){
             tasks[i] = quotesApiDataReader.Read(i+1, limit);
         }
-        // Task.WaitAll(tasks); // is blocking;
+        // Task.WaitAll(tasks); // is a blocking operation;
         // return tasks.Select( tasks => tasks.Result).ToList(); 
 
         return (await Task.WhenAll(tasks)).ToList(); // note needs: WhenAll is awaited, returns  array
     }
 }
 public class UserInteraction : IUserInteractor{
-    public static string ReadValidWord(string prompt){
+    public string ReadValidWord(string prompt){
         Console.WriteLine(prompt);
         string word;
         do{
@@ -46,7 +48,7 @@ public class UserInteraction : IUserInteractor{
     public static bool isValidWord( string input){
         return input is not null && input.Length>0 && input.All(char.IsLetter);
     }
-    public static int ReadInteger(string prompt)
+    public int ReadInteger(string prompt)
     {
         Console.WriteLine(prompt);
         int result;
@@ -54,7 +56,7 @@ public class UserInteraction : IUserInteractor{
         return result;
     }
 
-    public static bool ReadBool(string message)
+    public bool ReadBool(string message)
     {
         Console.WriteLine($"{message} ('y' for 'yes', anything else for 'no')");
         var input = Console.ReadLine();
@@ -88,7 +90,12 @@ public interface IUserInteractor{
 
 public class QuoteListProcessor{
     private  Root[] _deserializedRoots;
+    private IUserInteractor _interactor;
     private  char[] _splitArray = new [] {' ', '.',',',';','!','?',':','\''};
+
+    public QuoteListProcessor(IUserInteractor interactor){
+        _interactor = interactor;
+    }
     public  async void DeserializeDataList(List<string> data){
         int listSize = data.Count();
         _deserializedRoots = new Root[listSize];
@@ -97,13 +104,13 @@ public class QuoteListProcessor{
         }
     }
     
-    public void ProcessAllPages( string word, IUserInteractor interactor){
+    public void ProcessAllPages( string word){
         for (int i = 0, l = _deserializedRoots.Count(); i < l; i++ ){
-            ProcessPage(i+1, word, interactor);
+            ProcessPage(i+1, word);
         }
     }
 
-    public void ProcessPage(int page, string word, IUserInteractor interactor){
+    public void ProcessPage(int page, string word){
 
         var pageCt = _deserializedRoots.Count();
         var root = !( pageCt < 1  || page < 1 || page > pageCt) ?
@@ -111,13 +118,12 @@ public class QuoteListProcessor{
              : null ;
         var quoteWithWord = root.data?
             .Where( quoteWithWord => (ContainsWord(quoteWithWord.quoteText, word)))
-            .OrderBy(quote => quote.quoteText.Length)
-            .FirstOrDefault();
+            .MinBy(quote => quote.quoteText.Length);
         if (quoteWithWord is not null){
-            interactor.PrintMessage($"{quoteWithWord.quoteText} -- {quoteWithWord.quoteAuthor}");
+            _interactor.PrintMessage($"{page}) {quoteWithWord.quoteText} -- {quoteWithWord.quoteAuthor}");
         }
         else{
-            interactor.PrintMessage($"No quotes found on page {page}.");
+            _interactor.PrintMessage($"No quotes found on page {page}.");
         }
 
     }
