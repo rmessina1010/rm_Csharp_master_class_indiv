@@ -12,7 +12,7 @@ public class Program{
         var word               =  interactor.ReadValidWord( "What word are you looking for?");
         var pages              = interactor.ReadInteger( "How many pages do you want to read");
         var limit              = interactor.ReadInteger( "How many quotes per page");
-        var multithred         = interactor.ReadBool( "Use multi-threading [y/n]");
+        var isMultithread      = interactor.ReadBool( "Use multi-threading [y/n]");
 
         Console.WriteLine("Fetching data...");
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
@@ -20,7 +20,7 @@ public class Program{
 
         //Console.WriteLine( quoteListProcessor.ContainsWord("'Age' is the acceptance of a term of years. But maturity is the glory of years.", word)? "yes":"no");
         quoteListProcessor.DeserializeDataList(data);
-        quoteListProcessor.ProcessAllPages(word);
+        await quoteListProcessor.ProcessAllPages(word, isMultithread);
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
@@ -96,7 +96,7 @@ public class QuoteListProcessor{
     public QuoteListProcessor(IUserInteractor interactor){
         _interactor = interactor;
     }
-    public  async void DeserializeDataList(List<string> data){
+    public async void DeserializeDataList(List<string> data){
         int listSize = data.Count();
         _deserializedRoots = new Root[listSize];
         for( int i=0; i < listSize; i++ ){
@@ -104,18 +104,29 @@ public class QuoteListProcessor{
         }
     }
     
-    public void ProcessAllPages( string word){
-        for (int i = 0, l = _deserializedRoots.Count(); i < l; i++ ){
-            ProcessPage(i+1, word);
+    public async Task ProcessAllPages(string word, bool isMultiThread){
+        int l = _deserializedRoots.Count();
+        var tasks= new Task[l];
+        
+        _interactor.PrintMessage( (isMultiThread ? "Parallel":"Serial")  + " processing is starting!"); 
+        for (int i = 0; i < l; i++ ){
+            int page = i+1;
+            if (!isMultiThread){
+                ProcessPage(page, word);
+            }else{
+                tasks[i] = Task.Run(()=>ProcessPage(page, word));
+            }
+        }
+        if (isMultiThread){
+            await Task.WhenAll(tasks);
         }
     }
 
     public void ProcessPage(int page, string word){
 
         var pageCt = _deserializedRoots.Count();
-        var root = !( pageCt < 1  || page < 1 || page > pageCt) ?
-             _deserializedRoots[page - 1]
-             : null ;
+        if ( pageCt < 1  || page < 1 || page > pageCt) { return ;}
+        var root =  _deserializedRoots[page - 1];
         var quoteWithWord = root.data?
             .Where( quoteWithWord => (ContainsWord(quoteWithWord.quoteText, word)))
             .MinBy(quote => quote.quoteText.Length);
@@ -125,7 +136,6 @@ public class QuoteListProcessor{
         else{
             _interactor.PrintMessage($"No quotes found on page {page}.");
         }
-
     }
 
     public bool ContainsWord (string input, string requiredWord){

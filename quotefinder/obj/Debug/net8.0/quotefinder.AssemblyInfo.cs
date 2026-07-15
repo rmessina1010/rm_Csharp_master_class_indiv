@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("quotefinder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30799a17dfdee0b197943bfe40d65a41a2cf02a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+256a17976a2d5a5527e99f8715389773fcda1e06")]
 [assembly: System.Reflection.AssemblyProductAttribute("quotefinder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("quotefinder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
