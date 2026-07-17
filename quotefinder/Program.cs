@@ -2,6 +2,7 @@
 using System.Net.Http;
 using Models.Datum;
 using System.Text.Json;
+using System.Diagnostics;
 
 public class Program{
 
@@ -20,7 +21,10 @@ public class Program{
 
         //Console.WriteLine( quoteListProcessor.ContainsWord("'Age' is the acceptance of a term of years. But maturity is the glory of years.", word)? "yes":"no");
         quoteListProcessor.DeserializeDataList(data);
+        Stopwatch stopwatch =   Stopwatch.StartNew();
         await quoteListProcessor.ProcessAllPages(word, isMultithread);
+        stopwatch.Stop();
+        Console.WriteLine("Process took"+stopwatch.ElapsedMilliseconds);
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
