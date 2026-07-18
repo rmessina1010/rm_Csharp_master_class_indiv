@@ -19,12 +19,8 @@ public class Program{
         List<string> data =  await FetchDataFromAllPagesAsync(pages, limit);
         Console.WriteLine("Data is ready");
 
-        //Console.WriteLine( quoteListProcessor.ContainsWord("'Age' is the acceptance of a term of years. But maturity is the glory of years.", word)? "yes":"no");
         quoteListProcessor.DeserializeDataList(data);
-        Stopwatch stopwatch =   Stopwatch.StartNew();
         await quoteListProcessor.ProcessAllPages(word, isMultithread);
-        stopwatch.Stop();
-        Console.WriteLine("Process took"+stopwatch.ElapsedMilliseconds);
     }
 
     public static async Task<List<string>> FetchDataFromAllPagesAsync( int pages, int limit){
